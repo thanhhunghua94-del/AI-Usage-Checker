@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AI Học Đường - Dùng AI hợp lí</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -215,6 +215,56 @@
           <span id="resultBar"></span>
         </div>
       </div>
+      <div class="review-section" id="danh-gia">
+  <div class="review-heading">
+    <p class="review-tag">Đánh giá trang web</p>
+    <h2>Bạn thấy trang web này hữu ích không?</h2>
+    <p>
+      Hãy để lại đánh giá để giúp trang web trở nên dễ hiểu và hữu ích hơn
+      cho học sinh, sinh viên khi học cách sử dụng AI hợp lí.
+    </p>
+  </div>
+
+  <div class="review-layout">
+    <form class="review-form" id="reviewForm">
+      <h3>Gửi đánh giá của bạn</h3>
+
+      <label>
+        Tên của bạn
+        <input type="text" id="reviewName" placeholder="Ví dụ: Minh Anh" required>
+      </label>
+
+      <div class="star-rating" aria-label="Chấm sao">
+        <button type="button" data-star="1">★</button>
+        <button type="button" data-star="2">★</button>
+        <button type="button" data-star="3">★</button>
+        <button type="button" data-star="4">★</button>
+        <button type="button" data-star="5">★</button>
+      </div>
+
+      <label>
+        Bình luận
+        <textarea id="reviewComment" rows="5" placeholder="Bạn thấy trang web này thế nào?" required></textarea>
+      </label>
+
+      <button class="review-submit" type="submit">Gửi đánh giá</button>
+    </form>
+
+    <div class="review-result">
+      <div class="review-summary">
+        <span id="averageRating">0.0</span>
+        <div>
+          <strong>Điểm đánh giá trung bình</strong>
+          <p id="reviewCount">Chưa có đánh giá nào</p>
+        </div>
+      </div>
+
+      <div class="comment-list" id="commentList">
+        <p class="empty-comment">Chưa có bình luận. Hãy là người đầu tiên đánh giá.</p>
+      </div>
+    </div>
+  </div>
+</div>
     </section>
 
     <section class="section section-links" id="tai-lieu">
@@ -253,9 +303,11 @@
   </main>
 
   <footer>
+    <p>Project Group 2</p>
     <p>AI tốt nhất khi nó giúp bạn nghĩ rõ hơn, không phải nghĩ thay bạn.</p>
   </footer>
 
   <script src="script.js"></script>
 </body>
 </html>
+<script src="script.js"></script>
