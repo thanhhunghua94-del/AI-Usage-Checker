@@ -149,12 +149,11 @@ function setupReviewSection() {
       card.className = "comment-card";
 
       card.innerHTML = `
-        <strong>${review.name}</strong>
+       <strong>${review.name || "Người học ẩn danh"}</strong>
         <div class="comment-stars">
           ${"★".repeat(review.stars)}${"☆".repeat(5 - review.stars)}
         </div>
-        <p>${review.comment}</p>
-      `;
+<p>${review.comment || "Không có bình luận."}</p>      `;
 
       commentList.appendChild(card);
     });
