@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   const prompts = {
     learn:
-`Bạn là gia sư kiên nhẫn. Mình đang học [môn/chủ đề].
+`Hãy trở thành gia sư và dạy mình, đang học [môn/chủ đề].
 Mình đã hiểu: [ghi 2-3 ý].
 Mình đang kẹt ở: [ghi chỗ chưa hiểu].
 Hãy giải thích bằng ngôn ngữ dễ hiểu, dùng 1 ví dụ gần gũi, sau đó hỏi mình 3 câu để kiểm tra xem mình đã hiểu chưa. Đừng đưa đáp án cuối ngay nếu có bài tập.`,
@@ -74,7 +74,7 @@ Yêu cầu:
         score += Number(value);
       }
 
-      const percent = Math.round((score / 12) * 100);
+      const percent = Math.round((score / 6) * 100);
 
       let title = "";
       let text = "";
@@ -92,7 +92,7 @@ Yêu cầu:
 
       resultCard.hidden = false;
       resultTitle.textContent = title;
-      resultText.textContent = `Điểm của bạn: ${score}/12. ${text}`;
+      resultText.textContent = `Dữ liệu đánh giá của bạn: ${score}/6. ${text}`;
       resultBar.style.width = `${percent}%`;
     });
   }
