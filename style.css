@@ -787,4 +787,10 @@ footer p {
     font-size: 1.5rem;
   }
 }
-
+.comment-time {
+  display: block;
+  margin-top: 6px;
+  color: #6b7280;
+  font-size: 0.95rem;
+  font-weight: 600;
+}

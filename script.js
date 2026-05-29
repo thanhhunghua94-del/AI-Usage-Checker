@@ -1,5 +1,5 @@
 
-import { db } from "./firebase.js";
+import { db } from "./firebase.js?v=2";
 import {
   addDoc,
   collection,
@@ -162,16 +162,31 @@ function setupReviewSection() {
       card.className = "comment-card";
 
       const name = document.createElement("strong");
-      name.textContent = review.name || "Người học ẩn danh";
+name.textContent = review.name || "Người học ẩn danh";
 
-      const stars = document.createElement("div");
-      stars.className = "comment-stars";
-      stars.textContent = "★".repeat(review.stars) + "☆".repeat(5 - review.stars);
+const stars = document.createElement("div");
+stars.className = "comment-stars";
+stars.textContent = "★".repeat(review.stars) + "☆".repeat(5 - review.stars);
 
-      const comment = document.createElement("p");
-      comment.textContent = review.comment || "Không có bình luận.";
+const time = document.createElement("span");
+time.className = "comment-time";
 
-      card.append(name, stars, comment);
+if (review.createdAt && review.createdAt.toDate) {
+  time.textContent = review.createdAt.toDate().toLocaleString("vi-VN", {
+    hour: "2-digit",
+    minute: "2-digit",
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric"
+  });
+} else {
+  time.textContent = "Vừa xong";
+}
+
+const comment = document.createElement("p");
+comment.textContent = review.comment || "Không có bình luận.";
+
+card.append(name, stars, time, comment);
 
       commentList.appendChild(card);
     });
