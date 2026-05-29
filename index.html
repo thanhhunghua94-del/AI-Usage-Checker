@@ -31,7 +31,7 @@
         </p>
 
         <div class="hero-actions">
-          <a class="button primary" href="#usage-check">Trắc nghiệm kiểm tra AI</a>
+          <a class="button primary" href="#usage-check">Trắc nghiệm đánh giá bản thân</a>
           <a class="button secondary" href="#thuc-trang">Xem số liệu</a>
         </div>
       </div>
@@ -124,13 +124,13 @@
         <article class="guide-card">
           <span>03</span>
           <h3>Kiểm chứng</h3>
-          <p>Đối chiếu thông tin với sách, giáo viên, tài liệu học thuật hoặc nguồn chính thống.</p>
+          <p>Đối chiếu thông tin với sách, giáo viên, tài liệu học hoặc nguồn chính thống.</p>
         </article>
 
         <article class="guide-card">
           <span>04</span>
           <h3>Tự viết lại</h3>
-          <p>Không nộp nguyên văn câu trả lời của AI. Hãy viết lại theo lập luận của mình.</p>
+          <p>Không nộp nguyên văn câu trả lời của AI.Thay vào đó hãy viết lại theo lập luận của mình.</p>
         </article>
       </div>
 
@@ -231,7 +231,15 @@
 
       <label>
         Tên của bạn
-<input type="text" id="reviewName" name="reviewName" placeholder="Ví dụ: Tung Tung sahur" required>
+<input
+  type="text"
+  id="reviewName"
+  name="reviewName"
+  placeholder="Ví dụ: Tung Tung sahur"
+  required
+  oninvalid="this.setCustomValidity('Bạn đẹp trai/gái ơi quên nhập tên nè')"
+  oninput="this.setCustomValidity('')"
+>
       </label>
       <div class="star-rating" aria-label="Chấm sao">
         <button type="button" data-star="1">★</button>
@@ -240,10 +248,17 @@
         <button type="button" data-star="4">★</button>
         <button type="button" data-star="5">★</button>
       </div>
-
       <label>
   Bình luận
-  <textarea id="reviewComment" name="reviewComment" rows="5" placeholder="Bạn thấy trang web này thế nào? <333" required></textarea>
+  <textarea
+  id="reviewComment"
+  name="reviewComment"
+  rows="5"
+  placeholder="Bạn thấy trang web này thế nào? <333"
+  required
+  oninvalid="this.setCustomValidity('Bạn đẹp trai/gái ơi quên nhập bình luận nè')"
+  oninput="this.setCustomValidity('')"
+></textarea>
 </label>
 
 <button class="review-submit" type="submit">Gửi đánh giá</button>
@@ -317,7 +332,8 @@
   </main>
 
   <footer>
-    <p>Project Group 2</p>
+    <p>Project Group 2 </p>
+    <p>© 2026 GROUP 2  say no with copy, just creation.</p>
     <p>AI tốt nhất khi nó giúp bạn hiểu sâu hơn về vấn đề, không phải nghĩ thay bạn.</p>
   </footer>
 

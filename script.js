@@ -1,4 +1,4 @@
-
+﻿
 import { db } from "./firebase.js?v=2";
 import {
   addDoc,
@@ -22,19 +22,19 @@ Hãy giải thích bằng ngôn ngữ dễ hiểu, dùng 1 ví dụ gần gũi, 
 Đề bài: [dán đề].
 Luận điểm ban đầu của mình: [ghi ý chính].
 Dàn ý nháp: [dán dàn ý].
-Hãy chỉ ra điểm mạnh, điểm yếu, chỗ thiếu bằng chứng và gợi ý cách cải thiện. Không viết thành bài hoàn chỉnh.`,
+Hãy chỉ ra điểm mạnh, điểm yếu, chỗ thiếu bằng chứng và gợi ý cách cải thiện, Không viết thành bài hoàn chỉnh.`,
 
     check:
 `Hãy kiểm tra bản nháp dưới đây theo 4 tiêu chí: đúng kiến thức, logic, diễn đạt, nguồn cần kiểm chứng.
-Bản nháp: [dán bài của mình].
+Bản nháp: [dán bài của bạn vào].
 Trả lời bằng bảng gồm: vấn đề, vì sao cần sửa, gợi ý sửa. Nếu có thông tin có thể sai, hãy đánh dấu "cần kiểm chứng" thay vì khẳng định chắc chắn.`,
 
     quiz:
-`Bạn là người tạo bài luyện tập. Hãy tạo 8 câu hỏi trắc nghiệm về [chủ đề].
+`Hãy tạo cho tôi bài luyện tập, tạo 8 câu hỏi trắc nghiệm về [chủ đề].'
 Yêu cầu:
 - Có 4 lựa chọn A, B, C, D.
 - Không đưa đáp án ngay.
-- Sau khi mình trả lời, hãy chấm điểm, giải thích từng câu và gợi ý phần cần ôn lại.`
+- Sau khi tôi trả lời, hãy chấm điểm, giải thích từng câu và gợi ý phần cần ôn lại.`
   };
 
   const promptText = document.querySelector("#promptText");
@@ -142,7 +142,7 @@ function setupReviewSection() {
     commentList.innerHTML = "";
 
     if (reviews.length === 0) {
-      commentList.innerHTML = `<p class="empty-comment">Chưa có bình luận. Hãy là người đầu tiên đánh giá.</p>`;
+      commentList.innerHTML = `<p class="empty-comment">Chưa có bình luận, Hãy là người đầu tiên bình luận.</p>`;
       averageRating.textContent = "0.0";
       reviewCount.textContent = "Chưa có đánh giá nào";
       return;
@@ -194,9 +194,8 @@ card.append(name, stars, time, comment);
 
   reviewForm.addEventListener("submit", function (event) {
     event.preventDefault();
-
-    if (selectedStars === 0) {
-      alert("Bạn hãy chọn số sao trước khi gửi đánh giá.");
+     if (selectedStars === 0) {
+      alert("đánh giá sao đi bạn ơi <333");
       return;
     }
 
@@ -218,7 +217,7 @@ card.append(name, stars, time, comment);
       })
       .catch(function (error) {
         console.error("Không gửi được đánh giá:", error);
-        alert("Không gửi được đánh giá. Hãy kiểm tra lại kết nối hoặc quyền Firestore.");
+        alert("Không gửi được đánh giá. Hãy kiểm tra lại kết nối.");
       });
   });
 
@@ -229,6 +228,6 @@ card.append(name, stars, time, comment);
     renderReviews();
   }, function (error) {
     console.error("Không tải được đánh giá:", error);
-    commentList.innerHTML = `<p class="empty-comment">Không tải được bình luận. Hãy kiểm tra cấu hình Firestore.</p>`;
+    commentList.innerHTML = `<p class="empty-comment">Không tải được bình luận. Hãy kiểm tra lại kết nối.</p>`;
   });
 }
