@@ -1,3 +1,14 @@
+
+import { db } from "./firebase.js";
+import {
+  addDoc,
+  collection,
+  onSnapshot,
+  orderBy,
+  query,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/12.14.0/firebase-firestore.js";
+
 document.addEventListener("DOMContentLoaded", function () {
   const prompts = {
     learn:
@@ -112,7 +123,9 @@ function setupReviewSection() {
   if (!reviewForm) return;
 
   let selectedStars = 0;
-  let reviews = JSON.parse(localStorage.getItem("websiteReviews")) || [];
+  let reviews = [];
+  const reviewsCollection = collection(db, "websiteReviews");
+  const reviewsQuery = query(reviewsCollection, orderBy("createdAt", "desc"));
 
   starButtons.forEach(function (button) {
     button.addEventListener("click", function () {
@@ -144,16 +157,21 @@ function setupReviewSection() {
     averageRating.textContent = average.toFixed(1);
     reviewCount.textContent = reviews.length + " đánh giá";
 
-    reviews.slice().reverse().forEach(function (review) {
+    reviews.forEach(function (review) {
       const card = document.createElement("article");
       card.className = "comment-card";
 
-      card.innerHTML = `
-       <strong>${review.name || "Người học ẩn danh"}</strong>
-        <div class="comment-stars">
-          ${"★".repeat(review.stars)}${"☆".repeat(5 - review.stars)}
-        </div>
-<p>${review.comment || "Không có bình luận."}</p>      `;
+      const name = document.createElement("strong");
+      name.textContent = review.name || "Người học ẩn danh";
+
+      const stars = document.createElement("div");
+      stars.className = "comment-stars";
+      stars.textContent = "★".repeat(review.stars) + "☆".repeat(5 - review.stars);
+
+      const comment = document.createElement("p");
+      comment.textContent = review.comment || "Không có bình luận.";
+
+      card.append(name, stars, comment);
 
       commentList.appendChild(card);
     });
@@ -170,21 +188,32 @@ function setupReviewSection() {
     const newReview = {
       name: reviewName.value.trim(),
       stars: selectedStars,
-      comment: reviewComment.value.trim()
+      comment: reviewComment.value.trim(),
+      createdAt: serverTimestamp()
     };
 
-    reviews.push(newReview);
-    localStorage.setItem("websiteReviews", JSON.stringify(reviews));
+    addDoc(reviewsCollection, newReview)
+      .then(function () {
+        reviewForm.reset();
+        selectedStars = 0;
 
-    reviewForm.reset();
-    selectedStars = 0;
-
-    starButtons.forEach(function (star) {
-      star.classList.remove("active");
-    });
-
-    renderReviews();
+        starButtons.forEach(function (star) {
+          star.classList.remove("active");
+        });
+      })
+      .catch(function (error) {
+        console.error("Không gửi được đánh giá:", error);
+        alert("Không gửi được đánh giá. Hãy kiểm tra lại kết nối hoặc quyền Firestore.");
+      });
   });
 
-  renderReviews();
+  onSnapshot(reviewsQuery, function (snapshot) {
+    reviews = snapshot.docs.map(function (doc) {
+      return doc.data();
+    });
+    renderReviews();
+  }, function (error) {
+    console.error("Không tải được đánh giá:", error);
+    commentList.innerHTML = `<p class="empty-comment">Không tải được bình luận. Hãy kiểm tra cấu hình Firestore.</p>`;
+  });
 }
