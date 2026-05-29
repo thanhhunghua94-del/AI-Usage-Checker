@@ -79,10 +79,10 @@ Yêu cầu:
       let title = "";
       let text = "";
 
-      if (score >= 10) {
+      if (score >= 6) {
         title = "Bạn đang dùng AI khá hợp lí";
         text = "Bạn biết tự làm trước, kiểm chứng thông tin và dùng AI như công cụ hỗ trợ.";
-      } else if (score >= 6) {
+      } else if (score >= 3) {
         title = "Bạn dùng AI ở mức cần điều chỉnh";
         text = "Bạn nên kiểm chứng nguồn thường xuyên hơn và tránh để AI làm thay phần suy nghĩ quan trọng.";
       } else {

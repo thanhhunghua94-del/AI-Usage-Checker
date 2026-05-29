@@ -36,7 +36,7 @@ a {
   min-height: 96vh;
   color: #fff;
   background:
-    linear-gradient(120deg, rgba(13, 29, 38, 0.92), rgba(18, 95, 74, 0.67)),
+    linear-gradient(110deg, rgba(13, 29, 38, 0.92), rgba(18, 95, 74, 0.67)),
     url("https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1800&q=80") center / cover;
 }
 
@@ -787,3 +787,4 @@ footer p {
     font-size: 1.5rem;
   }
 }
+
