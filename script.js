@@ -12,15 +12,15 @@ import {
 document.addEventListener("DOMContentLoaded", function () {
   const prompts = {
     learn:
-`Hãy trở thành gia sư và dạy mình, đang học [môn/chủ đề].
-Mình đã hiểu: [ghi 2-3 ý].
-Mình đang kẹt ở: [ghi chỗ chưa hiểu].
-Hãy giải thích bằng ngôn ngữ dễ hiểu, dùng 1 ví dụ gần gũi, sau đó hỏi mình 3 câu để kiểm tra xem mình đã hiểu chưa. Đừng đưa đáp án cuối ngay nếu có bài tập.`,
+`Hãy trở thành gia sư và dạy tôi, đang học [môn/chủ đề].
+Tôi đã hiểu: [ghi 2-3 ý].
+Tôi đang kẹt ở: [ghi chỗ chưa hiểu].
+Hãy giải thích bằng ngôn ngữ dễ hiểu, dùng 1 ví dụ gần gũi, sau đó hỏi tôi 3 câu để kiểm tra xem tôi đã hiểu chưa. Đừng đưa đáp án cuối ngay nếu có bài tập.`,
 
     essay:
-`Bạn là người phản biện bài viết, không viết hộ mình.
+`Bạn là người phản biện bài viết, không viết hộ tôi.
 Đề bài: [dán đề].
-Luận điểm ban đầu của mình: [ghi ý chính].
+Luận điểm ban đầu của tôi: [ghi ý chính].
 Dàn ý nháp: [dán dàn ý].
 Hãy chỉ ra điểm mạnh, điểm yếu, chỗ thiếu bằng chứng và gợi ý cách cải thiện, Không viết thành bài hoàn chỉnh.`,
 
